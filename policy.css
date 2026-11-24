@@ -30,26 +30,43 @@ body {
   position: fixed; inset: 0; overflow: hidden; z-index: -1; pointer-events: none;
   background: linear-gradient(160deg, var(--sky) 12%, var(--horizon) 58%, var(--sky));
 }
+.mist canvas, .valley-fog { position: absolute; inset: 0; width: 100%; height: 100%; }
+.valley-fog {
+  background: linear-gradient(175deg, transparent 8%, var(--horizon) 43%, var(--horizon) 72%, transparent);
+  opacity: .46;
+}
+.mist::before { z-index: 1; }
+@keyframes lift-fog {
+  0%, 100% { opacity: .93; }
+  38%, 56% { opacity: .08; }
+  80% { opacity: .78; }
+}
 .mist::before, .mist::after {
   content: ""; position: absolute; inset: -10% -50%;
   background: var(--vapor);
   --tile: clamp(640px, 85vw, 1440px);
-  mask: url("wind-mist.png") 0 34% / var(--tile) 62% repeat-x;
-  -webkit-mask: url("wind-mist.png") 0 34% / var(--tile) 62% repeat-x;
-  opacity: .8;
+  mask: url("valley-mist.webp") 0 54% / var(--tile) 78% repeat-x;
+  -webkit-mask: url("valley-mist.webp") 0 54% / var(--tile) 78% repeat-x;
+  --dense: .8; --clear: .13; opacity: var(--dense);
 }
 .mist::after {
   --tile: clamp(760px, 105vw, 1600px);
   mask-position: 0 96%; -webkit-mask-position: 0 96%;
-  opacity: .56;
+  --dense: .56; --clear: .09; opacity: var(--dense);
+}
+@keyframes thin-mist {
+  0%, 100% { opacity: var(--dense); }
+  38%, 56% { opacity: var(--clear); }
 }
 @keyframes wind { to { transform: translateX(var(--tile)); } }
 @media (prefers-reduced-motion: no-preference) {
+  .motion-ready .valley-fog { animation: lift-fog 38s ease-in-out infinite; }
   .motion-ready .mist::before, .motion-ready .mist::after {
     left: calc(-1 * var(--tile)); right: 0;
-    animation: wind 92s linear infinite;
+    animation: wind 92s linear infinite, thin-mist 38s ease-in-out infinite;
   }
-  .motion-ready .mist::after { animation-duration: 138s; animation-delay: -65s; }
+  .motion-ready .mist::after { animation-duration: 138s, 38s; animation-delay: -65s, -2s; }
+  [data-pause="true"].motion-ready .valley-fog,
   [data-pause="true"].motion-ready .mist::before,
   [data-pause="true"].motion-ready .mist::after { animation-play-state: paused; }
 }
@@ -77,6 +94,14 @@ h2 { margin: 2rem 0 .65rem; font-size: 1.55rem; }
 p { margin: .55rem 0 1rem; }
 .meta { color: var(--secondary); font-size: .92rem; }
 @media (max-width: 51rem) { main { margin-inline: clamp(.55rem, 2vw, 1.2rem); } }
+@media (max-width: 51rem) {
+  main { margin-top: clamp(5rem, 16svh, 8.5rem); }
+  .mist::before, .mist::after {
+    top: -5rem; bottom: auto; height: clamp(21rem, 55vh, 30rem);
+    mask-position-y: 10%; -webkit-mask-position-y: 10%;
+  }
+  .valley-fog { background: linear-gradient(175deg, transparent, var(--horizon) 12%, var(--horizon) 45%, transparent); }
+}
 @media print {
   :root, :root[data-theme="true"] { --ink: black; --secondary: #333; --accent: black; }
   body, main { background: white; }
