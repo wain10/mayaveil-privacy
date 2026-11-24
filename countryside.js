@@ -4,7 +4,9 @@
   if (!ctx) return;
   let frame;
   function paint() {
-    const w = canvas.clientWidth, h = canvas.clientHeight;
+    // Only paint inside the full-size backdrop, including during stylesheet updates.
+    if (getComputedStyle(canvas).position !== "absolute") return;
+    const w = canvas.parentElement.clientWidth, h = canvas.parentElement.clientHeight;
     if (!w || !h) return;
     const density = Math.min(window.devicePixelRatio || 1, 4, Math.sqrt(10000000 / (w*h)));
     canvas.width = Math.round(w*density);
@@ -68,7 +70,7 @@
     ctx.fillStyle=haze;ctx.fillRect(0,horizon+relief,w,h);
   }
   function queuePaint(){cancelAnimationFrame(frame);frame=requestAnimationFrame(paint);}
-  new ResizeObserver(queuePaint).observe(canvas);
+  new ResizeObserver(queuePaint).observe(canvas.parentElement);
   new MutationObserver(queuePaint).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
   window.addEventListener("resize",queuePaint);
   paint();

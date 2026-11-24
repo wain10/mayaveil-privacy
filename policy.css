@@ -30,12 +30,17 @@ body {
   position: fixed; inset: 0; overflow: hidden; z-index: -1; pointer-events: none;
   background: linear-gradient(160deg, var(--sky) 12%, var(--horizon) 58%, var(--sky));
 }
+.mist canvas { display: block; opacity: .65; }
 .mist canvas, .valley-fog { position: absolute; inset: 0; width: 100%; height: 100%; }
 .valley-fog {
   background: linear-gradient(175deg, transparent 8%, var(--horizon) 43%, var(--horizon) 72%, transparent);
   opacity: .46;
 }
 .mist::before { z-index: 1; }
+@keyframes reveal-valley {
+  0%, 8%, 86%, 100% { opacity: 0; }
+  38%, 56% { opacity: 1; }
+}
 @keyframes lift-fog {
   0%, 100% { opacity: .93; }
   38%, 56% { opacity: .08; }
@@ -60,12 +65,14 @@ body {
 }
 @keyframes wind { to { transform: translateX(var(--tile)); } }
 @media (prefers-reduced-motion: no-preference) {
+  .motion-ready .mist canvas { animation: reveal-valley 38s ease-in-out infinite; }
   .motion-ready .valley-fog { animation: lift-fog 38s ease-in-out infinite; }
   .motion-ready .mist::before, .motion-ready .mist::after {
     left: calc(-1 * var(--tile)); right: 0;
     animation: wind 92s linear infinite, thin-mist 38s ease-in-out infinite;
   }
   .motion-ready .mist::after { animation-duration: 138s, 38s; animation-delay: -65s, -2s; }
+  [data-pause="true"].motion-ready .mist canvas,
   [data-pause="true"].motion-ready .valley-fog,
   [data-pause="true"].motion-ready .mist::before,
   [data-pause="true"].motion-ready .mist::after { animation-play-state: paused; }
