@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MayaVeil privacy policy</title>
   <link rel="alternate" hreflang="it" href="it.html">
-  <script src="appearance.js"></script>
+  <script src="appearance.js?v=3"></script>
   <script defer src="countryside.js?v=2"></script>
   <script defer src="contact.js"></script>
-  <link rel="stylesheet" href="policy.css?v=2">
+  <link rel="stylesheet" href="policy.css?v=3">
 </head>
 <body>
 <div class="mist" aria-hidden="true"><canvas width="0" height="0"></canvas><div class="valley-fog"></div></div>
 <main>
   <nav aria-label="Page controls">
-    <a lang="it" hreflang="it" href="it.html">Italiano</a>
-    <button hidden id="theme" type="button" aria-pressed="false">Light mode</button>
-    <button hidden id="pause" type="button" aria-pressed="false">Pause fog</button>
+    <select hidden id="language" aria-label="Language">
+      <option lang="en" value="index.html" selected>English</option>
+      <option lang="it" value="it.html">Italiano</option>
+    </select>
+    <noscript><a lang="it" hreflang="it" href="it.html">Italiano</a></noscript>
+    <button hidden id="theme" type="button" aria-label="Light theme" data-light="Light theme" data-dark="Dark theme">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <g class="sun"><circle cx="12" cy="12" r="4"/><path d="M19.000,12.000 L21.000,12.000 M16.950,16.950 L18.364,18.364 M12.000,19.000 L12.000,21.000 M7.050,16.950 L5.636,18.364 M5.000,12.000 L3.000,12.000 M7.050,7.050 L5.636,5.636 M12.000,5.000 L12.000,3.000 M16.950,7.050 L18.364,5.636"/></g>
+        <path class="moon" d="M19.5 15.5 C10 19 5 10 9 4 C1 7 3 20 12 20 Q17 20 19.5 15.5 Z"/>
+      </svg>
+    </button>
   </nav>
   <header>
     <p class="meta">Draft · MayaVeil Basic for Android · Version 1.0.24 · Updated 24 November 2026</p>

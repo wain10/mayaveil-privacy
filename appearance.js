@@ -1,27 +1,30 @@
-// Keep appearance choices within the current tab. Storage may be disabled.
 (() => {
   const page = document.documentElement;
-  function apply(name, enabled) {
-    page.dataset[name] = String(enabled);
-    const button = document.getElementById(name);
-    if (button) button.setAttribute("aria-pressed", String(enabled));
-  }
-  for (const name of ["theme", "pause"]) {
-    let enabled = false;
-    try { enabled = sessionStorage.getItem("mayaveil-" + name) === "true"; } catch {}
-    apply(name, enabled);
-  }
+  let light = false;
+  try { light = sessionStorage.getItem("mayaveil-theme") === "true"; } catch {}
+  page.dataset.theme = String(light);
+
   document.addEventListener("DOMContentLoaded", () => {
-    for (const name of ["theme", "pause"]) {
-      const button = document.getElementById(name);
-      button.hidden = false;
-      apply(name, page.dataset[name] === "true");
-      button.addEventListener("click", () => {
-        const enabled = page.dataset[name] !== "true";
-        apply(name, enabled);
-        try { sessionStorage.setItem("mayaveil-" + name, String(enabled)); } catch {}
-      });
+    const theme = document.getElementById("theme");
+    function updateLabel() {
+      const action = light ? theme.dataset.dark : theme.dataset.light;
+      theme.setAttribute("aria-label", action);
+      theme.title = action;
     }
+    updateLabel();
+    theme.hidden = false;
+    theme.addEventListener("click", () => {
+      light = !light;
+      page.dataset.theme = String(light);
+      updateLabel();
+      try { sessionStorage.setItem("mayaveil-theme", String(light)); } catch {}
+    });
+    const language = document.getElementById("language");
+    const syncLanguage = () => { language.value = language.querySelector("[selected]").value; };
+    syncLanguage();
+    window.addEventListener("pageshow", syncLanguage);
+    language.hidden = false;
+    language.addEventListener("change", () => { window.location.assign(language.value); });
     page.classList.add("motion-ready");
   });
 })();

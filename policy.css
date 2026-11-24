@@ -72,10 +72,7 @@ body {
     animation: wind 92s linear infinite, thin-mist 38s ease-in-out infinite;
   }
   .motion-ready .mist::after { animation-duration: 138s, 38s; animation-delay: -65s, -2s; }
-  [data-pause="true"].motion-ready .mist canvas,
-  [data-pause="true"].motion-ready .valley-fog,
-  [data-pause="true"].motion-ready .mist::before,
-  [data-pause="true"].motion-ready .mist::after { animation-play-state: paused; }
+
 }
 main {
   max-width: 48rem; margin: clamp(1rem, 5vw, 4rem) auto;
@@ -88,10 +85,13 @@ nav button, #reveal-email {
   font: inherit; color: var(--secondary); border: 1px solid var(--rule);
   border-radius: .4rem; background: transparent; padding: .25em .7em; cursor: pointer;
 }
-nav button[aria-pressed="true"] { color: var(--ink); border-color: currentColor; }
-nav button[aria-pressed="true"]::before { content: "✓"; margin-inline-end: .4em; }
+#theme { justify-content: center; padding: 0; width: 48px; height: 48px; color: var(--ink); border: 0; border-radius: 50%; }
+#theme:hover { background: var(--rule); }
+#theme .moon, [data-theme="true"] #theme .sun { display: none; }
+[data-theme="true"] #theme .moon { display: block; }
+#language { min-height: 44px; padding: .3em .55em; color: var(--ink); background: transparent; border: 1px solid var(--rule); border-radius: .4rem; font: inherit; cursor: pointer; }
+#language option { background: var(--sky); color: var(--ink); }
 [hidden] { display: none !important; }
-@media (prefers-reduced-motion: reduce) { #pause { display: none; } }
 a { color: var(--accent); text-underline-offset: .2em; }
 :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 header { margin: 2.5rem 0; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
