@@ -19,12 +19,6 @@
       updateLabel();
       try { sessionStorage.setItem("mayaveil-theme", String(light)); } catch {}
     });
-    const language = document.getElementById("language");
-    const syncLanguage = () => { language.value = language.querySelector("[selected]").value; };
-    syncLanguage();
-    window.addEventListener("pageshow", syncLanguage);
-    language.hidden = false;
-    language.addEventListener("change", () => { window.location.assign(language.value); });
     page.classList.add("motion-ready");
   });
 })();
