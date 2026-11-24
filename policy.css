@@ -14,3 +14,6 @@ h1 { margin: .2rem 0 1rem; font-size: clamp(2.15rem, 6vw, 3.2rem); }
 h2 { margin: 2rem 0 .65rem; font-size: 1.55rem; }
 p { margin: .55rem 0 1rem; }
 .meta { color: var(--secondary); font-size: .92rem; }
+
+#reveal-email { color: inherit; background: transparent; padding: .2em .5em; border: 1px solid var(--rule); border-radius: .3em; font: inherit; cursor: pointer; }
+#reveal-email:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
