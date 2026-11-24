@@ -12,9 +12,9 @@
 <main>
   <nav aria-label="Lingua"><a lang="en" hreflang="en" href="index.html">English</a></nav>
   <header>
-    <p class="meta">Bozza · MayaVeil Basic per Android · Versione 1.0.19</p>
+    <p class="meta">Bozza · MayaVeil Basic per Android · Versione 1.0.23 · Aggiornata il 24 novembre 2026</p>
     <h1>Informativa sulla privacy di MayaVeil</h1>
-    <p>Quando chiudi una sessione privata, MayaVeil cancella le pagine e i download che conservava per te. I file che scegli di salvare o inviare possono restare disponibili anche dopo la sessione.</p>
+    <p>Schopenhauer’s Lab non gestisce alcun server per MayaVeil. L’app non ci invia cronologia, ricerche, contenuti delle pagine, file, password o impostazioni. Non tracciamo come usi l’app. MayaVeil elabora le pagine e i file sul tuo dispositivo. Una copia che scegli di salvare o condividere può rimanere dopo la sessione.</p>
   </header>
   <section>
     <h2>Chi sviluppa MayaVeil?</h2>
@@ -28,26 +28,38 @@
     <p>Quando apri una pagina, il sito e i servizi che carica possono ricevere il tuo indirizzo IP e le informazioni che invii. Le ricerche vengono inviate al motore che scegli. Il gestore della rete e il fornitore DNS possono vedere informazioni sulla connessione. MayaVeil Basic si collega direttamente, quindi i siti possono vedere il tuo indirizzo IP.</p>
   </section>
   <section>
+    <h2>I siti possono usare la fotocamera o la posizione?</h2>
+    <p>MayaVeil Basic rifiuta le richieste dei siti di accedere alla posizione, alla fotocamera e al microfono o di inviare notifiche. Può riprodurre audio e video durante la sessione.</p>
+  </section>
+  <section>
     <h2>Chi verifica la sicurezza dei siti?</h2>
-    <p>MayaVeil usa il motore GeckoView di Mozilla con Google Safe Browsing. Il motore può contattare Google e Mozilla per aggiornare gli elenchi delle minacce o le impostazioni di sicurezza e verificare possibili minacce. Queste richieste possono rivelare il tuo indirizzo IP e informazioni necessarie al controllo di un sito. Per verificare un certificato, il motore può anche contattare l’autorità che lo ha emesso. Ogni servizio applica i propri tempi di conservazione. MayaVeil configura il motore per disattivare l’invio dei dati di telemetria.</p>
+    <p>MayaVeil usa il motore GeckoView di Mozilla con Google Safe Browsing. Il motore può contattare Google e Mozilla per aggiornare gli elenchi delle minacce o le impostazioni di sicurezza e verificare possibili minacce. Queste richieste possono rivelare il tuo indirizzo IP e informazioni necessarie al controllo di un sito. Per verificare un certificato, il motore può anche contattare l’autorità che lo ha emesso. Ogni servizio applica i propri tempi di conservazione. MayaVeil disattiva i controlli in tempo reale di Safe Browsing e configura il motore per disattivare l’invio della telemetria e il sistema di segnalazione degli arresti anomali.</p>
   </section>
   <section>
     <h2>Cosa succede ai file che apro, salvo o condivido?</h2>
-    <p>I download supportati e le anteprime usano la memoria di lavoro del dispositivo (RAM). Quando apri un documento da un’altra app, MayaVeil usa il permesso di lettura concesso da Android per quel file. Se chiudi l’anteprima o la sessione, il documento originale rimane dov’era.</p>
+    <p>I file che apri dal dispositivo rimangono al loro posto. Android concede a MayaVeil l’accesso in lettura al file selezionato. L’app mostra in memoria i PDF, le immagini, i testi, le tabelle CSV, i file JSON e i contenuti audio e video supportati. Sulle versioni compatibili di Android, la password che inserisci per un PDF protetto serve a mostrarne le pagine sul dispositivo. Quando chiudi un file aperto separatamente, MayaVeil cancella la copia di lavoro del lettore e torna alla schermata iniziale.</p>
     <p>Se condividi un link, l’app che scegli riceve l’indirizzo di origine. Se condividi un file, quell’app può leggerlo e conservarne una copia. Se salvi un file, una copia rimane nella posizione scelta finché non la elimini. Per trasferire un file MayaVeil ne conserva una copia separata in RAM. L’accesso scade dopo dieci minuti, oppure prima se il salvataggio termina o viene annullato.</p>
   </section>
   <section>
+    <h2>Cosa succede quando archivio una pagina?</h2>
+    <p>Se scegli Archivia questa pagina, MayaVeil crea una copia di sola lettura della versione stampabile della pagina. Può contenere dati personali visibili nella pagina, anche dopo l’accesso a un sito. MayaVeil comprime la copia e crea un file .maya sul dispositivo. Scegli tu dove salvarlo o a quale app inviarlo.</p>
+    <p>Con Archivia un file puoi anche comprimere un documento originale di qualsiasi formato, fino a 8 MiB. Il nome e il contenuto del file sono inclusi nell’archivio. Una volta aperto puoi salvarne l’originale o visualizzare un formato supportato. La creazione dell’archivio non esegue il contenuto e non modifica il file di origine.</p>
+    <p>Con Password, il file viene cifrato sul dispositivo. Chi ottiene sia il file sia la password corretta può leggerlo con un lettore compatibile. Non riceviamo né il file né la password e non disponiamo di una chiave di recupero. Con Copia pubblica, chiunque riceva il file può aprirlo e inoltrarlo senza password. MayaVeil apre entrambi i tipi di archivio in memoria. Le copie già salvate o condivise rimangono dopo la fine della sessione.</p>
+  </section>
+  <section>
     <h2>Cosa viene cancellato a fine sessione?</h2>
+    <p>La sessione termina se passi a un’altra app, blocchi il telefono, la chiudi dal menu o scade il tempo di inattività che hai scelto. Anche aprire la schermata Android di condivisione o salvataggio termina la navigazione. La versione distribuita chiede ad Android di bloccare gli screenshot e nascondere la pagina nelle app recenti.</p>
     <p>Quando esci dall’app o termini la sessione, MayaVeil la chiude e cerca di sovrascrivere le aree di memoria scrivibili che gestisce per i file prima di liberarle. Il motore del browser può anche scrivere file temporanei sul dispositivo. MayaVeil rimuove i file di sessione durante la pulizia e riprova all’avvio successivo se l’operazione è stata interrotta.</p>
     <p>Android, la tastiera, i siti e le app con cui condividi contenuti possono conservarne copie proprie. Chiudere MayaVeil non elimina queste copie né i file che hai salvato. Per cancellare dati che hai inviato a un sito, rivolgiti al gestore di quel sito.</p>
   </section>
   <section>
     <h2>Quali impostazioni rimangono sul dispositivo?</h2>
-    <p>Il motore di ricerca scelto, l’aspetto, la posizione della barra di navigazione e il tempo di inattività dopo il quale la sessione si chiude sono cifrati sul dispositivo. Per eliminare le preferenze e la chiave di cifratura, apri le impostazioni di MayaVeil e scegli <strong>Dimentica impostazioni</strong>. Puoi anche cancellare i dati dell’app dalle impostazioni di Android.</p>
+    <p>Il motore di ricerca scelto, l’aspetto, la posizione della barra di navigazione e il tempo di inattività dopo il quale la sessione si chiude sono cifrati sul dispositivo ed esclusi dal backup di Android. Per eliminare le preferenze e la chiave di cifratura, apri le impostazioni di MayaVeil e scegli <strong>Dimentica impostazioni</strong>. Puoi anche cancellare i dati dell’app dalle impostazioni di Android.</p>
   </section>
   <section>
     <h2>Contatti e informazioni su questa pagina</h2>
-    <p>Se ci scrivi, riceviamo il tuo indirizzo email e il contenuto del messaggio per rispondere alla richiesta. Evita di inviare password, cronologia di navigazione o file privati.</p>
+    <p>Le email che scegli di inviarci sono separate dall’uso dell’app. La nostra casella è ospitata da Proton AG in Svizzera. Usiamo il tuo indirizzo e ciò che ci invii per rispondere alle domande e gestire le richieste sulla privacy. Per la normale corrispondenza, la base giuridica è il nostro legittimo interesse a risponderti. Quando il GDPR ci impone di dare seguito a una richiesta di esercizio dei diritti, la base è tale obbligo legale. Cancelliamo la corrispondenza email quando la richiesta è risolta. Evita di inviarci password, cronologia o file privati.</p>
+    <p>Puoi chiedere l’accesso, la rettifica, la cancellazione o la limitazione del trattamento dei dati personali in nostro possesso e opporti al trattamento basato sul legittimo interesse. Di norma rispondiamo entro un mese. Puoi presentare un reclamo al Garante per la protezione dei dati personali o all’autorità di controllo competente. Non abbiamo una copia delle tue sessioni su un server da recuperare o cancellare.</p>
     <p>Quando leggi questa pagina su GitHub Pages, GitHub registra gli indirizzi IP dei visitatori per motivi di sicurezza. Questa pagina non usa strumenti di analisi, moduli o caratteri caricati da terzi. Puoi leggere l’informativa anche offline nella sezione dell’app dedicata alla protezione della sessione. <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">Come GitHub Pages tratta i dati dei visitatori</a>.</p>
   </section>
 </main>

@@ -12,9 +12,9 @@
 <main>
   <nav aria-label="Language"><a lang="it" hreflang="it" href="it.html">Italiano</a></nav>
   <header>
-    <p class="meta">Draft · MayaVeil Basic for Android · Version 1.0.19</p>
+    <p class="meta">Draft · MayaVeil Basic for Android · Version 1.0.23 · Updated 24 November 2026</p>
     <h1>MayaVeil privacy policy</h1>
-    <p>When you close a private session, MayaVeil clears the pages and downloads it was holding for you. Files you choose to save or send can last beyond that session.</p>
+    <p>Schopenhauer’s Lab operates no MayaVeil backend. The app does not send us your browsing history, searches, page contents, files, passwords or settings. We do not track how you use the app. MayaVeil processes pages and files on your device. A copy you choose to save or share can remain after the session.</p>
   </header>
   <section>
     <h2>Who develops MayaVeil?</h2>
@@ -28,26 +28,38 @@
     <p>When you open a page, the website and any services it loads can receive your IP address and the information you send them. Searches go to the search provider you select. Your network and DNS providers can see connection information. MayaVeil Basic connects directly, so websites can see your IP address.</p>
   </section>
   <section>
+    <h2>Can websites use my camera or location?</h2>
+    <p>MayaVeil Basic declines requests for your location, camera, microphone and website notifications. It can play audio or video during the session.</p>
+  </section>
+  <section>
     <h2>Who helps check whether a site is safe?</h2>
-    <p>MayaVeil uses Mozilla’s GeckoView browser engine with Google Safe Browsing. The engine may contact Google and Mozilla to update threat lists or security settings and to check suspected threats. Those requests can reveal your IP address and information used to check a site. Certificate checks may also contact the authority that issued a site’s certificate. These services apply their own retention policies. MayaVeil configures the engine to disable telemetry uploads.</p>
+    <p>MayaVeil uses Mozilla’s GeckoView browser engine with Google Safe Browsing. The engine may contact Google and Mozilla to update threat lists or security settings and to check suspected threats. Those requests can reveal your IP address and information used to check a site. Certificate checks may also contact the authority that issued a site’s certificate. These services apply their own retention policies. MayaVeil disables real-time Safe Browsing lookups and configures the engine to disable telemetry uploads and its crash reporter.</p>
   </section>
   <section>
     <h2>What happens to files I open, save or share?</h2>
-    <p>Supported downloads and previews use your device’s working memory (RAM). If you open a document from another app, MayaVeil uses the read access Android grants for that file. Closing the preview or session leaves the original where it was.</p>
+    <p>Files you open from your device stay where they were. MayaVeil receives read access to the selected file. It displays supported PDFs, images, text, spreadsheets in CSV format, JSON, audio and video from working memory. An Android version that supports protected PDFs can use a password you enter to display the pages locally. Closing a separately opened file clears the reader’s working copy and returns to MayaVeil home.</p>
     <p>If you share a link, the app you choose receives the source address. If you share a file, that app can read and keep a copy. If you save a file, a copy stays in the location you choose until you delete it. For these file transfers, MayaVeil holds a separate copy in RAM. Access expires after ten minutes, or earlier when a save finishes or is canceled.</p>
   </section>
   <section>
+    <h2>What happens when I archive a page?</h2>
+    <p>If you choose Archive this page, MayaVeil creates a read-only snapshot of the printable page. It can contain personal details visible on that page, including content you viewed while signed in. MayaVeil compresses it and creates a .maya file on your device. You choose where to save it or which app receives it.</p>
+    <p>You can also choose Archive a file to compress an original document of any format, up to 8 MiB. Its filename and contents are inside the archive. Unlocking it lets you save the original or preview a supported format. Archiving a file does not run its contents or change the source file.</p>
+    <p>With Password, the file is encrypted on the device. Anyone who obtains both the file and the correct password can read it with a compatible reader. We receive neither and have no recovery key. With Public copy, anyone who receives the file can open it and forward it without a password. When you open either kind, MayaVeil reads the page in memory. Ending the session leaves previously saved and shared archives in place.</p>
+  </section>
+  <section>
     <h2>What does session cleanup erase?</h2>
+    <p>Switching apps, locking the phone, ending the session yourself or reaching your chosen inactivity timeout ends the session. Opening Android’s share or save screen also ends browsing. The release app asks Android to block screenshots and hide the current page in the recent-apps preview.</p>
     <p>When you leave the app or end the session, MayaVeil closes the session and attempts to overwrite the writable file memory it controls before releasing it. The browser engine can also write temporary files to your device. MayaVeil removes session files during cleanup and retries at startup if cleanup was interrupted.</p>
     <p>Android, your keyboard, websites and apps you share with may keep their own copies. Closing MayaVeil cannot erase those copies or a file you saved. To delete information you sent to a website, contact that website.</p>
   </section>
   <section>
     <h2>Which settings survive a session?</h2>
-    <p>Your search provider, appearance, navigation bar position and optional session timeout are encrypted on your device. To delete these preferences and their encryption key, open Settings and choose <strong>Forget saved settings</strong>. You can also clear MayaVeil’s storage in Android settings.</p>
+    <p>Your search provider, appearance, navigation bar position and optional session timeout are encrypted on your device and excluded from Android backup. To delete these preferences and their encryption key, open Settings and choose <strong>Forget saved settings</strong>. You can also clear MayaVeil’s storage in Android settings.</p>
   </section>
   <section>
     <h2>Contact and this policy page</h2>
-    <p>If you email us, we receive your email address and whatever you include in the message to answer your request. Please leave out passwords, browsing history and private files.</p>
+    <p>Email you choose to send is separate from using the app. Our mailbox is hosted by Proton AG in Switzerland. We use your address and what you send to reply to enquiries and handle privacy requests. For ordinary correspondence our legal basis is our legitimate interest in answering you. When the GDPR requires us to act on a rights request, our basis is that legal obligation. We delete your email correspondence when your request is resolved. Please leave out passwords, browsing history and private files.</p>
+    <p>You can ask for access, correction, erasure or restriction of personal data we hold and object to processing based on legitimate interests. We normally respond within one month. You can also complain to the Italian data protection authority (Garante per la protezione dei dati personali) or your local supervisory authority. We have no backend copy of your sessions to retrieve or erase.</p>
     <p>When you read this page on GitHub Pages, GitHub logs visitors’ IP addresses for security. The page itself uses no analytics, forms or third-party fonts. You can also read the app’s privacy information offline under Session protection. <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">GitHub Pages and visitor data</a>.</p>
   </section>
 </main>
