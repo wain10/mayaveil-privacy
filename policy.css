@@ -1,19 +1,85 @@
-:root { color-scheme: light dark; --paper: #f7f5f0; --ink: #252725; --secondary: #525c57; --rule: #c9ccc5; }
-@media (prefers-color-scheme: dark) {
-  :root { --paper: #1b1d1c; --ink: #f0eee8; --secondary: #b6c0b9; --rule: #484f49; }
+:root {
+  color-scheme: dark;
+  --sky: #121b23;
+  --horizon: #374750;
+  --paper: rgba(22, 30, 36, .86);
+  --ink: #f3f1e9;
+  --secondary: #bccbd0;
+  --rule: rgba(183, 199, 205, .28);
+  --accent: #c3e4eb;
+  --vapor: #f1f8f9;
+}
+:root[data-theme="true"] {
+  color-scheme: light;
+  --sky: #a7b7bd;
+  --horizon: #dae0df;
+  --paper: rgba(250, 249, 242, .88);
+  --ink: #202b30;
+  --secondary: #42575f;
+  --rule: rgba(64, 86, 93, .26);
+  --accent: #215563;
+  --vapor: white;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink); font: 1.05rem/1.65 system-ui, sans-serif; }
-main { max-width: 47rem; margin: auto; padding: 2rem clamp(1.25rem, 5vw, 3rem) 4rem; overflow-wrap: anywhere; }
-nav { text-align: end; }
-a { color: inherit; text-underline-offset: .2em; }
-a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+body {
+  margin: 0; background: var(--sky); color: var(--ink);
+  font: 1.05rem/1.65 system-ui, sans-serif;
+  isolation: isolate;
+}
+.mist {
+  position: fixed; inset: 0; overflow: hidden; z-index: -1; pointer-events: none;
+  background: linear-gradient(160deg, var(--sky) 12%, var(--horizon) 58%, var(--sky));
+}
+.mist::before, .mist::after {
+  content: ""; position: absolute; inset: -10% -50%;
+  background: var(--vapor);
+  --tile: clamp(640px, 85vw, 1440px);
+  mask: url("wind-mist.png") 0 34% / var(--tile) 62% repeat-x;
+  -webkit-mask: url("wind-mist.png") 0 34% / var(--tile) 62% repeat-x;
+  opacity: .8;
+}
+.mist::after {
+  --tile: clamp(760px, 105vw, 1600px);
+  mask-position: 0 96%; -webkit-mask-position: 0 96%;
+  opacity: .56;
+}
+@keyframes wind { to { transform: translateX(var(--tile)); } }
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready .mist::before, .motion-ready .mist::after {
+    left: calc(-1 * var(--tile)); right: 0;
+    animation: wind 92s linear infinite;
+  }
+  .motion-ready .mist::after { animation-duration: 138s; animation-delay: -65s; }
+  [data-pause="true"].motion-ready .mist::before,
+  [data-pause="true"].motion-ready .mist::after { animation-play-state: paused; }
+}
+main {
+  max-width: 48rem; margin: clamp(1rem, 5vw, 4rem) auto;
+  padding: clamp(1.25rem, 4vw, 3.2rem); background: var(--paper);
+  border: 1px solid var(--rule); border-radius: .75rem; overflow-wrap: anywhere;
+}
+nav { display: flex; justify-content: flex-end; gap: .3rem 1rem; align-items: center; flex-wrap: wrap; font-size: .9rem; }
+nav a, nav button { display: inline-flex; align-items: center; min-height: 44px; }
+nav button, #reveal-email {
+  font: inherit; color: var(--secondary); border: 1px solid var(--rule);
+  border-radius: .4rem; background: transparent; padding: .25em .7em; cursor: pointer;
+}
+nav button[aria-pressed="true"] { color: var(--ink); border-color: currentColor; }
+nav button[aria-pressed="true"]::before { content: "✓"; margin-inline-end: .4em; }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { #pause { display: none; } }
+a { color: var(--accent); text-underline-offset: .2em; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 header { margin: 2.5rem 0; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
 h1, h2 { font-family: Georgia, serif; font-weight: normal; line-height: 1.2; text-wrap: balance; }
 h1 { margin: .2rem 0 1rem; font-size: clamp(2.15rem, 6vw, 3.2rem); }
 h2 { margin: 2rem 0 .65rem; font-size: 1.55rem; }
 p { margin: .55rem 0 1rem; }
 .meta { color: var(--secondary); font-size: .92rem; }
-
-#reveal-email { color: inherit; background: transparent; padding: .2em .5em; border: 1px solid var(--rule); border-radius: .3em; font: inherit; cursor: pointer; }
-#reveal-email:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (max-width: 51rem) { main { margin-inline: clamp(.55rem, 2vw, 1.2rem); } }
+@media print {
+  :root, :root[data-theme="true"] { --ink: black; --secondary: #333; --accent: black; }
+  body, main { background: white; }
+  main { border: 0; margin: 0; max-width: none; padding: 0; }
+  .mist, nav, #reveal-email { display: none; }
+}
